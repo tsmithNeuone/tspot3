@@ -1,3 +1,6 @@
+require 'json'
+require "rest_client"
+
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
 
@@ -61,6 +64,16 @@ class SearchesController < ApplicationController
       format.html { redirect_to searches_url }
       format.json { head :no_content }
     end
+  end
+
+  def api_call_nearby #this is the wrapper for the api call to truspotApi. 
+    #TODO: maybe move to a model? (idk how to do this yet...)
+    lat = params[:lat] ||= '30.3356800079346'
+    lng = params[:lng] ||= '-97.8045883178711'
+    api_headers = {"api_key"=>"jpzbffjtkq", "api_sig"=>"trkqwbhpylsdjsohgvyw"}
+    api_url = "truspotapi.neubus.com"
+    response1 = RestClient.get("http://#{api_url}/nearby?long=#{lng}&lat=#{lat}&sort_order=ASC&category_id=1", api_headers)
+    render json: response1
   end
 
   private

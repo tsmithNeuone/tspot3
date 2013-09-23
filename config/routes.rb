@@ -1,5 +1,7 @@
 Truspot3::Application.routes.draw do
-  resources :searches
+  resources :searches do
+    get :api_call_nearby, on: :collection
+  end
   get 'results/main'
   post 'results/main' => 'results#main'
   root 'searches#new'

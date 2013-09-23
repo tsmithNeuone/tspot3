@@ -1,13 +1,15 @@
-<%= @search %>
-<%= @address %>
-
+<%= javascript_include_tag "results.js", "data-turbolinks-track" => true %>
+<!-- these are dangerous calls... if the data is not set in the controller, or
+	if someone navigates to the results page without searching first the page
+	will have errors because these will be nil. //TODO: fix this in the controller?
+	or possibly here with if statements...that will make this a pretty messy view though. -->
+<div id="data_lat" style="display: none"><%= @search[:latitude]%></div>
+<div id="data_lng" style="display: none"><%= @search[:longitude]%></div>
+<div id="data_category" style="display: none"><%= @search[:category]%></div>
 <div id="results_page">
 
 	<div id="results">
 		results go here
-		<!-- this location getting method may or may not work. it doesn't work with local hosting
-		the webpage because it relies on the ip address. It might work one it is running on
-		production mode. -->
 	
 
 	</div>
