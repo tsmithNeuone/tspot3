@@ -51,6 +51,11 @@ $(document).ready(function() {
 
 		});
 		map.fitBounds(latlngbounds);
+		
+		if (map.getZoom() > 15) {
+			map.setZoom(15);
+		}
+
 	});
 	api.fail(function(jq, textStatus, errorThr) {
 		alert(textStatus + errorThr);
