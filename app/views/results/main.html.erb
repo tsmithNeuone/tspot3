@@ -1,17 +1,20 @@
-<%= javascript_include_tag "results.js", "data-turbolinks-track" => true %>
-<!-- these are dangerous calls... if the data is not set in the controller, or
-	if someone navigates to the results page without searching first the page
-	will have errors because these will be nil. //TODO: fix this in the controller?
-	or possibly here with if statements...that will make this a pretty messy view though. -->
+<%= javascript_include_tag "results.js", "data-turbolinks-track" => true %> <!-- these are dangerous calls... if the data is not set in the controller, or
+if someone navigates to the results page without searching first the page
+will have errors because these will be nil. //TODO: fix this in the controller?
+or possibly here with if statements...that will make this a pretty messy view though. -->
 <div id="data_lat" style="display: none"><%= @search[:latitude]%></div>
 <div id="data_lng" style="display: none"><%= @search[:longitude]%></div>
 <div id="data_category" style="display: none"><%= @search[:category]%></div>
 <div id="results_page">
 
-	<div id="results">
+	<div id="results_box">
 		results go here
-	
+		<div id="results">
 
+		</div>
+		<%= button_tag "Prev 10", id: "prev_vendors_button"%>
+		<%= button_tag "Next 10", id: "next_vendors_button"%>
+		
 	</div>
 
 	<div id="map">
@@ -19,3 +22,5 @@
 		<div id="map-canvas"></div>
 	</div>
 </div>
+
+

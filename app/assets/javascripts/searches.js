@@ -25,13 +25,6 @@ $(document).ready(function() {
 			this.value = default_address;
 		}
 	});
-	// $("#search_address").focus(function() {
-	// // when input is focused, clear its contents
-	// if (this.value == default_address) {
-	// this.value = "";
-	// }
-	//
-	// });
 });
 
 function set_cur_position(position) {

@@ -2,8 +2,11 @@ Truspot3::Application.routes.draw do
   resources :searches do
     get :api_call_nearby, on: :collection
   end
+  
+  
   get 'results/main'
   post 'results/main' => 'results#main'
+  get 'results/vendor_detail_api' => 'results#vendor_detail_api'
   root 'searches#new'
 
   # The priority is based upon order of creation: first created -> highest priority.

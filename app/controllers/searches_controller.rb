@@ -68,11 +68,13 @@ class SearchesController < ApplicationController
 
   def api_call_nearby #this is the wrapper for the api call to truspotApi. 
     #TODO: maybe move to a model? (idk how to do this yet...)
+    api_headers = {"api_key"=>"jpzbffjtkq", "api_sig"=>"trkqwbhpylsdjsohgvyw"}
     lat = params[:lat] ||= '30.3356800079346'
     lng = params[:lng] ||= '-97.8045883178711'
-    api_headers = {"api_key"=>"jpzbffjtkq", "api_sig"=>"trkqwbhpylsdjsohgvyw"}
+    offset = params[:offset] ||= '0';
+    
     api_url = "truspotapi.neubus.com"
-    response1 = RestClient.get("http://#{api_url}/nearby?long=#{lng}&lat=#{lat}&sort_order=ASC&category_id=1", api_headers)
+    response1 = RestClient.get("http://#{api_url}/nearby?long=#{lng}&lat=#{lat}&offset=#{offset}&sort_order=ASC&category_id=1", api_headers)
     render json: response1
   end
 
