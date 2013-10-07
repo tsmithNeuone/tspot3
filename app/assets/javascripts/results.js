@@ -18,6 +18,9 @@ $(document).ready(function() {
 	$("#prev_vendors_button").click(function() {
 		getPrev10();
 	});
+	$("#redo_search_button").click(function(){
+		redoSearch();
+	});
 });
 
 function initialize() {//map options for google map. can add customization stuff in here.
@@ -129,6 +132,16 @@ function vendor_click(index) {
 	}, 1465);
 	
 	append_vendor_detail(index);
+}
+
+function redoSearch(){
+	$("#data_lat").text(map.getCenter().lat());
+	$("#data_lng").text(map.getCenter().lng());
+	offset_of_vendors = 0;
+	clearVendorData();
+	getVendorData();
+	$("#prev_vendors_button").hide();
+	
 }
 
 function getNext10() {
